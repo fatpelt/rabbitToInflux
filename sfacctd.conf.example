@@ -1,0 +1,12 @@
+daemonize: true
+pidfile: /var/run/sfacctd.pid
+syslog: daemon
+debug: false
+interface: enp1s0f0
+
+plugins: amqp
+
+sfacctd_counter_amqp_exchange: pmacct
+sfacctd_counter_amqp_routing_key: acct
+sfacctd_counter_amqp_refresh_time: 300
+

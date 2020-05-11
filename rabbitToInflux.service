@@ -1,0 +1,18 @@
+[Unit]
+Description=rabbitToInflux python goodness
+After=network.target rabbitmq-server.service
+StartLimitInterval=300s
+StartLimitBurst=8
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/rabbitToInflux/main.conf
+ExecStart=/usr/bin/python3 /home/administrator/Projects/rabbitToInflux/main.py $CMDLINE
+#PrivateNetwork=no
+User=administrator
+SyslogIdentifier=rabbitToInflux
+Restart=always
+RestartSec=30s
+
+[Install]
+WantedBy=default.target
