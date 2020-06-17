@@ -61,8 +61,9 @@ class main():
                 self.__influx.write_points(self.__points.formattedPoints, time_precision='u')
             else:
                 print(self.__points.formattedPoints, flush=True)
-        except:
+        except Exception as ex:
             print("{}, failed saving {} points to the database. attempting to reconnect".format(datetime.datetime.now(), self.__points.currentPoints), flush=True)
+            print(ex);
             self.__influxInit()
             return False
         else:
