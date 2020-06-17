@@ -206,6 +206,11 @@ class plugin():
                     }
                 }
                 parsed = True
+                for key in parsedPoint['fields']:
+                    if type(parsedPoint['fields'][key]) == int and parsedPoint['fields'][key] >= 9023372036854775807:
+                        parsedPoint = {}
+                        parsed = False
+                        break
             except:
                 pass
 
