@@ -17,7 +17,7 @@ class plugin():
 
                 parsedPoint = {}
                 parsedPoint['measurement'] = data['measurement']
-                parsedPoint['timestamp'] = data['timestamp']
+                parsedPoint['time'] = data['timestamp']
                 parsedPoint['fields'] = data['fields']
                 parsedPoint['tags'] = data['tags']
                 parsed = True
