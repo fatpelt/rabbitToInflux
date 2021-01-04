@@ -11,6 +11,9 @@ class plugin():
         parsedPoint = None
         if (method.routing_key == 'acct') and ('statsType' in data) and (data['statsType'] == 'formatted'):
             try:
+                if len(data['fields']) == 0 or len(data['tags']) == 0:
+                    return(False, {})
+
                 parsedPoint = {}
                 parsedPoint['measurement'] = data['measurement']
                 parsedPoint['time'] = data['timestamp']
