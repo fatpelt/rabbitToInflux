@@ -1,0 +1,2 @@
+pip3 install -r /usr/local/etc/rabbitToInflux/requirements.txt
+systemctl daemon-reload

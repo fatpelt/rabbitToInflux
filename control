@@ -1,0 +1,6 @@
+Package: rabbitToInflux
+Version: 1.0BUILD
+Maintainer: Patrick Felt <patrick.felt@sling.com>
+Architecture: amd64
+Description: this script moves data out of a rabbit queue and into the internal influxdb database.  in our environment we run a rabbitmq (non-clustered) server in each datacenter facility.  this box also runs sfacct to collect sflow counters, and this script to push all parsed datapoints to an influxdb instance in a remote datacenter.  this allows for intermittency on the wan connectivity without losing datapoints as they are queued in rabbit.  rabbit was chosen as pmacct already supported amqp, it's easy to set up and configure, and reliable.  Commit: COMMIT
+Dependency: python3-pip pmacct rabbitmq-server librabbitmq4 librabbitmq-dev
