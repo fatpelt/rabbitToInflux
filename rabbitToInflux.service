@@ -6,8 +6,8 @@ StartLimitBurst=8
 
 [Service]
 Type=simple
-EnvironmentFile=/etc/rabbitToInflux/main.conf
-ExecStart=/usr/bin/python3 /home/administrator/Projects/rabbitToInflux/main.py $CMDLINE
+EnvironmentFile=/usr/local/etc/rabbitToInflux/main.conf
+ExecStart=/usr/bin/python3 /usr/local/bin/rabbitToInflux/main.py $CMDLINE
 #PrivateNetwork=no
 User=administrator
 SyslogIdentifier=rabbitToInflux
