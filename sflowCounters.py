@@ -13,7 +13,6 @@ from pysnmp.hlapi import *
 from pysnmp.proto.rfc1905 import endOfMibView
 
 
-# this plugin doesn't have any specific options to add
 def parser(parser):
     parser.add_argument("--eapiUser", default="root",
         help="EAPI user, default is root")
@@ -158,7 +157,6 @@ class plugin():
             return (None, None)
 
     def processMessage(self, method, data):
-        parsed = False
         parsedPoint = None
         # these datapoints come from pmacct so they are formatted funny
         if (method.routing_key == 'acct') and ('sf_cnt_type' in data) and (data['sf_cnt_type'] == 'sflow_cnt_generic'):
@@ -205,14 +203,12 @@ class plugin():
                         'packets_out':data.get('ifOutUcastPkts', 0)
                     }
                 }
-                parsed = True
                 for key in parsedPoint['fields']:
                     if type(parsedPoint['fields'][key]) == int and parsedPoint['fields'][key] >= 9023372036854775807:
-                        parsedPoint = {}
-                        parsed = False
+                        parsedPoint = None
                         break
             except:
                 pass
 
-        return (parsed, parsedPoint)
+        return parsedPoint
 

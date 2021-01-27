@@ -102,8 +102,8 @@ class main():
         #  plugins can each parse the point and create a new point for it.  pass it through each plugin and let them decide
         pointSaved = False
         for plugin in self.__plugins:
-            (result, processedPoint) = plugin.processMessage(method, data)
-            if result:
+            processedPoint = plugin.processMessage(method, data)
+            if processedPoint is not None:
                 if self.__options.verbosity > 1:
                     print("point saved", flush=True)
 
